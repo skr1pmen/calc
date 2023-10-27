@@ -36,12 +36,15 @@ function remove() {
 }
 
 clear.addEventListener('click', function () {
-    if (numbers.innerText.length !== 1) {
-        numbers.innerText = numbers.innerText.slice(0, -1);
-        result.innerText = result.innerText.slice(0, -1);
-    } else {
-        remove();
+    if (!result.classList.contains('active')){
+        if (numbers.innerText.length !== 1) {
+            numbers.innerText = numbers.innerText.slice(0, -1);
+            result.innerText = result.innerText.slice(0, -1);
+        } else {
+            remove();
+        }
     }
+
 });
 
 themeBtn.addEventListener('click', function () {
