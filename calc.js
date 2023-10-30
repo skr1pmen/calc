@@ -6,6 +6,7 @@ const buttons = document.querySelectorAll('.btn-calc');
 const equal = document.querySelector('.btn-equal');
 const themeBtn = document.querySelector('.btn-color');
 const theme = document.querySelector('#theme');
+const moreBtn = document.querySelector('.btn-more');
 
 buttons.forEach(function (button) {
     button.addEventListener('click', function (event) {
@@ -13,7 +14,9 @@ buttons.forEach(function (button) {
         result.classList.remove('active');
         let value = event.target.dataset.num;
         numbers.innerText += value;
-        result.innerText = "= " + eval(numbers.innerText.replace('×', '*').replace('÷', '/').replace('^', '**'));
+        result.innerText = "= " + eval(
+            numbers.innerText.replace('×', '*').replace('÷', '/').replace('^', '**').replace('%', '/100')
+        );
     });
 });
 
@@ -56,3 +59,11 @@ themeBtn.addEventListener('click', function () {
         themeBtn.innerText = "🌑"
     }
 });
+
+moreBtn.addEventListener("click", function () {
+    if (document.querySelector(".moreButtons").classList.contains("moreActive")) {
+        document.querySelector(".moreButtons").classList.remove("moreActive");
+    } else {
+        document.querySelector(".moreButtons").classList.add("moreActive");
+    }
+})
